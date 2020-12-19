@@ -1,0 +1,55 @@
+@font-face {
+    font-family: "SF-Pro-Display-Black";
+    src: url(../assets/San-Francisco-Pro-Fonts-master/San-Francisco-Pro-Fonts-master/SF-Pro-Display-Black.otf);
+}
+
+@font-face {
+    font-family: "SF-Pro-Display-Medium";
+    src: url(../assets/San-Francisco-Pro-Fonts-master/San-Francisco-Pro-Fonts-master/SF-Pro-Display-Medium.otf);
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 6vh;
+    font-family: "SF-Pro-Display-Medium";
+    /* background: #333333; */
+    box-shadow: -1em -1em 3em rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: #ffffff;
+    right: 0;
+}
+
+.navbar ul,
+.search-cart {
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar ul li {
+    list-style: none;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.8rem;
+}
+
+.search-cart {
+    width: 10%;
+    /* background-color: rebeccapurple; */
+}
+
+svg {
+    width: 25px;
+
+}
