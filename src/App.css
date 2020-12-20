@@ -104,6 +104,7 @@ section {
 
 body {
   line-height: 1;
+  /* width: 100vw; */
 }
 
 ol,
@@ -129,9 +130,16 @@ table {
   border-spacing: 0;
 }
 
+
+
 .App {
   /* width: 100vw; */
   /* min-height: ; */
+}
+
+.app-wrapper {
+  /* width: 100%;min-height: 100vh; */
+  /* background: red; */
 }
 
 .cart-body {

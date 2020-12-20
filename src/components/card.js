@@ -11,7 +11,8 @@ export default function Card(props) {
             images,
             name,
             price,
-            itemCount: 0
+            itemCount: 0,
+            code
         }
         props.handleAddToCart(obj);
     }
@@ -25,7 +26,7 @@ export default function Card(props) {
                 <h1>{name}</h1>
                 <span>{price.value}</span>
             </div>
-            <button className="btn" onClick={handleClick}>Add to Cart</button>
+            <button style={{ background: "rgb(0, 162, 255)" }} className="btn" onClick={handleClick}>Add to Cart</button>
         </div>
     )
 }

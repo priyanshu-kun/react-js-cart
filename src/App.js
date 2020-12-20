@@ -26,6 +26,9 @@ const options = {
 function App() {
   const [seed, setSeed] = useState([]);
   const [preloader, setPreloader] = useState(true);
+  const [isCart, setIsCart] = useState(false);
+  const [cartData, setCartData] = useState([]);
+  const [cartCounter, setCartCounter] = useState(0);
 
   useEffect(() => {
 
@@ -43,20 +46,55 @@ function App() {
     getData();
   }, []);
 
-  const handleAddToCart = (code) => {
-    console.log(code)
+  const handleAddToCart = (cartObj) => {
+    // console.log(cartObj)
+    const checkElement = cartData.find(obj => {
+      return obj.code === cartObj.code
+    })
+
+    if (checkElement) {
+      alert("item is already in cart");
+      return;
+    }
+    else {
+      setCartData([...cartData, cartObj]);
+    }
+
   }
+
+  const handleCartClick = (cartState) => {
+    console.log(cartState)
+    setIsCart(!isCart)
+  }
+
+  const removeItemFromCart = (id) => {
+    const newArray = cartData.filter(obj => {
+      return obj.code !== id;
+    })
+    setCartData([...newArray]);
+    console.log(newArray);
+  }
+
+  useEffect(() => {
+    setCartCounter(cartData.length);
+  }, [cartData, setCartData])
 
   return (
     <div className="App">
-      <Navbar />
-      {preloader ? <div className="preloader"></div> : <div className="cart-body">
-        {
-          seed.map(product => {
-            return <Card product={product} key={product.code} handleAddToCart={handleAddToCart} />
-          })
-        }
-      </div>}
+      <Navbar handleCartClick={handleCartClick} cartCounter={cartCounter} />
+      {
+        preloader ? <div className="preloader"></div> : <div className="app-wrapper">
+          {
+            isCart ? <Cart cartdata={cartData} removeItemFromCart={removeItemFromCart} /> : <div className="cart-body">
+              {
+                seed.map(product => {
+                  return <Card product={product} key={product.code} handleAddToCart={handleAddToCart} />
+                })
+              }
+            </div>
+          }
+        </div>
+      }
     </div>
   );
 }
